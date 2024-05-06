@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Ex05</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <!-- This part will be generated from a different file -->
+    </header>
+
+    <main>
+        <h1 class="text-center py-3">Ex05 - Filter List</h1>
+        <div class="container">
+            <div class="mb-3">
+                <label for="keyword" class="form-label">Keyword</label>
+                <input type="text" class="form-control" name="keyword" id="keyword" aria-describedby="helpId"
+                    placeholder="Enter keyword" required>
+            </div>
+            <ul class="list-group" id="list-group">
+                <li class="list-group-item list-group-item-action list-group-item-primary">A</li>
+                <li class="list-group-item">Aa</li>
+                <li class="list-group-item">Ab</li>
+                <li class="list-group-item">Abc</li>
+                <li class="list-group-item list-group-item-action list-group-item-primary">B</li>
+                <li class="list-group-item">Ba</li>
+                <li class="list-group-item">Bb</li>
+                <li class="list-group-item">Bbc</li>
+                <li class="list-group-item list-group-item-action list-group-item-primary">C</li>
+                <li class="list-group-item">Ca</li>
+                <li class="list-group-item">Cb</li>
+                <li class="list-group-item">Cbc</li>
+            </ul>
+        </div>
+    </main>
+
+    <footer>
+        <!-- Footer content -->
+    </footer>
+
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"></script>
+
+    <script>
+        function filterList() {
+            const keyword = document.getElementById("keyword").value.toLowerCase();
+            const listItems = document.querySelectorAll('#list-group li');
+
+            listItems.forEach(item => {
+                if (item.classList.contains('list-group-item-primary')) {
+                    return;
+                }
+                const containsKeyword = item.textContent.toLowerCase().includes(keyword);
+                item.style.display = containsKeyword ? 'block' : 'none';
+            });
+        }
+
+        document.getElementById("keyword").addEventListener("input", filterList);
+    </script>
+</body>
+
+</html>
